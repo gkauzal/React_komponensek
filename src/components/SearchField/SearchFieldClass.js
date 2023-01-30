@@ -45,7 +45,8 @@ class SearchField extends Component {
   findFirst(term) {
     if (term.length < 1) return '';
     const result = this.props.options.find((option) => option.startsWith(term.toLowerCase()));
-    return result || '';
+    if (result) return term + result.substring(term.length);
+    else return '';
   }
 
   handleKeyEvent = (e) => {
@@ -99,6 +100,9 @@ class SearchField extends Component {
         />
         {opened && (
           <div className='options'>
+            <div className='search-results'>
+              <span>Search result: {searchResults.length}</span>
+            </div>
             {searchResults.map((option, index) => (
               <button
                 className={`option ${index === cursorIndex ? 'hover' : ''} `}

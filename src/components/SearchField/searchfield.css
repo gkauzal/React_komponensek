@@ -60,6 +60,18 @@
   filter: brightness(0.85);
 }
 
+.search-field .search-results {
+  cursor: pointer;
+  border: none;
+  padding: 5px 5px 5px 5px;
+  background-color: var(--main-bg-color);
+  font-size: 1 rem;
+  text-align: left;
+  margin-left: 10px;
+  color: var(--main-text-color);
+  font-style: italic;
+}
+
 .search-field .options {
   display: flex;
   flex-direction: column;

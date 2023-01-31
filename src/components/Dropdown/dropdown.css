@@ -79,3 +79,7 @@
   height: 0;
   border-top: 9px solid var(--main-text-color);
 }
+
+.dropdown-container .selected.placeholder {
+  color: #1f63c3;
+}

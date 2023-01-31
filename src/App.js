@@ -119,7 +119,12 @@ const App = () => {
       <input type='checkbox' checked={checked} onChange={() => setChecked(!checked)} />
       {checked && (
         <>
-          <Dropdown options={dropdownOptions} onChange={setSelected} />
+          <Dropdown
+            options={dropdownOptions}
+            onChange={setSelected}
+            noneValue='No fruit'
+            placeholderText='Select a fruit'
+          />
           <Counter max={15} onChange={setCount} />
           <h1 style={{ textAlign: 'center' }}>Count: {count}</h1>
           <h1 style={{ textAlign: 'center' }}>Selected: {selected}</h1>

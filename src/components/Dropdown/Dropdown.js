@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import './dropdown.css';
 
-const Dropdown = ({ options = [], onChange = () => {} }) => {
-  const [selected, setSelected] = useState(options[0]);
+const Dropdown = ({ options = [], noneValue = false, placeholderText = false, onChange = () => {} }) => {
+  const [dropdownOptions] = useState(noneValue ? [noneValue, ...options] : options);
+  const [selected, setSelected] = useState(placeholderText ? placeholderText : dropdownOptions[0]);
   const [opened, setOpened] = useState(false);
   const container = useRef();
 
@@ -21,7 +22,7 @@ const Dropdown = ({ options = [], onChange = () => {} }) => {
   return (
     <div className='dropdown-container' ref={container}>
       <button
-        className='selected'
+        className={`selected ${selected == placeholderText ? 'placeholder' : ''}`}
         onClick={() => {
           setOpened(!opened);
         }}>
@@ -30,7 +31,7 @@ const Dropdown = ({ options = [], onChange = () => {} }) => {
       </button>
       {opened && (
         <div className='options'>
-          {options
+          {dropdownOptions
             .filter((option) => option !== selected)
             .map((option) => (
               <button
